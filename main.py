@@ -15,13 +15,16 @@ while True:
         if event.type == pygame.QUIT:
             exit()
     screen.fill(BLACK)
+    pygame.draw.rect(screen, (75, 50, 45), (0, HALF_HEIGHT, 1200, 600))
+    pygame.draw.rect(screen, (74, 180, 236), (0, 0, 1200, HALF_HEIGHT))
 
     ray_casting(screen, player.pos, player.angle)
     player.movement()
-    pygame.draw.circle(screen, GREEN, (int(player.x), int(player.y)), 12)
-    
-    for x, y in world_map:
-        pygame.draw.rect(screen, GREY, (x, y, TILE, TILE))
+    #pygame.draw.circle(screen, RED, (int(player.x), int(player.y)), 12)
+
+    #for x, y in world_map:
+    #    pygame.draw.rect(screen, GREY, (x, y, TILE, TILE), 1)
+
 
     pygame.display.update()
     pygame.display.flip()

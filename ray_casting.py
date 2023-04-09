@@ -12,7 +12,11 @@ def ray_casting(sc, player_pos, player_angle):
         for depth in range(MAX_DEPTH):
             x = xo + depth * cos_a
             y = yo + depth * sin_a
-            pygame.draw.line(sc, GREEN, player_pos, (x, y), 1)
+            #pygame.draw.line(sc, WHITE, player_pos, (x, y), 1)
             if (x // TILE * TILE, y // TILE * TILE) in world_map:
+                proj_height = PROJ_COEFF / depth
+                c = 255 / (1 + depth * depth * 0.0001)
+                color = (c, c, c)
+                pygame.draw.rect(sc, color, (ray * SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
                 break
         cur_angle += DELTA_ANGLE
