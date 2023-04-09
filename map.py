@@ -1,9 +1,9 @@
 from settings import TILE
 
 text_map = ["WWWWWWWWWWWW",
-            "W.W..W.....W",
-            "W....WWW...W",
-            "W.W..W.....W",
+            "W.W.WW.....W",
+            "W...W...WWWW",
+            "W.W.W.....WW",
             "W.......W..W",
             "WWWWWWWWWWWW"]
 
