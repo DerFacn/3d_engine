@@ -1,0 +1,27 @@
+import math
+# INIT
+WIDTH = 1200
+HEIGHT = 600
+HALF_WIDTH = WIDTH // 2
+HALF_HEIGHT = HEIGHT // 2
+TILE = 100
+
+# PLAYER
+player_pos = (HALF_WIDTH, HALF_HEIGHT)
+player_angle = 0
+player_speed = 2
+
+# RAY CASTING SETTINGS
+FOV = math.pi / 3
+HALF_FOV = FOV / 2
+NUM_RAYS = 25
+MAX_DEPTH = 800
+DELTA_ANGLE = FOV / NUM_RAYS
+
+# COLORS
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+GREY = (110, 110, 110)
