@@ -12,8 +12,8 @@ def ray_casting(sc, player_pos, player_angle):
     xm, ym = mapping(ox, oy)
     cur_angle = player_angle - HALF_FOV
     for ray in range(NUM_RAYS):
-        sin_a = math.sin(cur_angle)
-        cos_a = math.cos(cur_angle)
+        sin_a = math.sin(cur_angle) or 0.000001
+        cos_a = math.cos(cur_angle) or 0.000001
 
         # verticals
         x, dx = (xm + TILE, 1) if cos_a >= 0 else (xm, -1)
@@ -36,7 +36,8 @@ def ray_casting(sc, player_pos, player_angle):
         # projection
         depth = depth_v if depth_v < depth_h else depth_h
         depth *= math.cos(player_angle - cur_angle)
-        proj_height = PROJ_COEFF / depth
+        depth = max(depth, 0.00001)  # the player can stand exactly on a grid line, which gives depth 0
+        proj_height = min(PROJ_COEFF / depth, 2 * HEIGHT)
         c = 255 / (1 + depth * depth * 0.00002)
         color = (c, c // 2, c // 3)
         pygame.draw.rect(sc, color, (ray * SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
